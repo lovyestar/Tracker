@@ -7,6 +7,7 @@ import '../models/preset_course.dart';
 import '../widgets/leaderboard_list.dart';
 import '../widgets/place_photo.dart';
 import '../widgets/retro.dart';
+import '../widgets/top_snack_bar.dart';
 import '../widgets/yeongmaegi_bubble.dart';
 import '../services/voice_service.dart';
 import 'condition_input_screen.dart';
@@ -202,9 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           child: IconButton(
             icon: const Icon(Icons.notifications_none, color: AppTheme.navy),
-            onPressed: () => ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('새 알림이 없데이!')),
-            ),
+            onPressed: () => showTopSnackBar(context, message: '새 알림이 없데이!'),
           ),
         ),
       ],
@@ -220,9 +219,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Icons.celebration,
         '이벤트',
         AppTheme.sunnyYellow,
-        () => ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('진행 중인 이벤트가 곧 열린데이!')),
-            )
+        () => showTopSnackBar(context, message: '진행 중인 이벤트가 곧 열린데이!')
       ),
     ];
     return Row(

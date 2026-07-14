@@ -9,6 +9,7 @@ import '../services/local_store.dart';
 import '../services/notification_store.dart';
 import '../services/voice_service.dart';
 import '../widgets/retro.dart';
+import '../widgets/top_snack_bar.dart';
 import '../widgets/yeongmaegi_bubble.dart';
 
 /// 완주 카드 화면입니다. (SPEC §4-6)
@@ -138,8 +139,9 @@ class _CompletionCardScreenState extends State<CompletionCardScreen> {
                 label: const Text('완주 카드 저장하기'),
                 style: FilledButton.styleFrom(
                     minimumSize: const Size.fromHeight(54)),
-                onPressed: () => ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('완주 카드가 기록에 저장됐데이!')),
+                onPressed: () => showTopSnackBar(
+                  context,
+                  message: '완주 카드가 기록에 저장됐데이!',
                 ),
               ),
               const SizedBox(height: 10),

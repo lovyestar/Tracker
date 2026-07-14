@@ -13,6 +13,7 @@ import '../services/place_repository.dart';
 import '../widgets/map_markers.dart';
 import '../widgets/my_location_button.dart';
 import '../widgets/place_photo.dart';
+import '../widgets/top_snack_bar.dart';
 import 'add_course_screen.dart';
 
 /// 지도 화면입니다.
@@ -322,9 +323,7 @@ class _MapScreenState extends State<MapScreen> {
       MaterialPageRoute(builder: (_) => const AddCourseScreen()),
     );
     if (added == true && mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('코스가 저장 탭 · 코스 목록에 추가됐데이!')),
-      );
+      showTopSnackBar(context, message: '코스가 저장 탭 · 코스 목록에 추가됐데이!');
     }
   }
 
@@ -411,9 +410,7 @@ class _MapScreenState extends State<MapScreen> {
     }
     if (pos == null) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('현재 위치를 못 찾았데이. 위치 권한을 확인해주이소.')),
-      );
+      showTopSnackBar(context, message: '현재 위치를 못 찾았데이. 위치 권한을 확인해주이소.');
       return;
     }
     await controller.moveCamera(

@@ -16,6 +16,7 @@ import '../widgets/course_stop_card.dart';
 import '../widgets/map_markers.dart';
 import '../widgets/my_location_button.dart';
 import '../widgets/place_detail_sheet.dart';
+import '../widgets/top_snack_bar.dart';
 import '../widgets/yeongmaegi_bubble.dart';
 import 'completion_card_screen.dart';
 
@@ -295,9 +296,7 @@ class _CourseMapScreenState extends State<CourseMapScreen> {
     }
     if (pos == null) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('현재 위치를 못 찾았데이. 위치 권한을 확인해주이소.')),
-      );
+      showTopSnackBar(context, message: '현재 위치를 못 찾았데이. 위치 권한을 확인해주이소.');
       return;
     }
     await controller.moveCamera(
@@ -365,19 +364,11 @@ class _CourseMapScreenState extends State<CourseMapScreen> {
 
   /// 영매기 말풍선 스타일의 토스트(스카이블루 라운드 + 옐로 링 아바타).
   void _showBubbleSnack(String message) {
-    ScaffoldMessenger.of(context)
-      ..hideCurrentSnackBar()
-      ..showSnackBar(
-        SnackBar(
-          duration: const Duration(seconds: 2),
-          behavior: SnackBarBehavior.floating,
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          margin: const EdgeInsets.fromLTRB(16, 0, 16, 12),
-          padding: EdgeInsets.zero,
-          content: YeongmaegiBubble(message: message, avatarSize: 44),
-        ),
-      );
+    showTopSnackBar(
+      context,
+      duration: const Duration(seconds: 2),
+      content: YeongmaegiBubble(message: message, avatarSize: 44),
+    );
   }
 
   void _onCompleted() {

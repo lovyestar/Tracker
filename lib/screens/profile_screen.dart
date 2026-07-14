@@ -17,6 +17,7 @@ import '../services/notification_store.dart';
 import '../services/user_course_store.dart';
 import '../services/voice_service.dart';
 import '../widgets/retro.dart';
+import '../widgets/top_snack_bar.dart';
 import 'add_course_screen.dart';
 import 'leaderboard_screen.dart';
 import 'notifications_screen.dart';
@@ -81,9 +82,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     if (result.cancelled) return; // 조용히 종료.
     if (!result.isSuccess) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(result.errorMessage ?? '로그인에 실패했데이.')),
-      );
+      showTopSnackBar(context,
+          message: result.errorMessage ?? '로그인에 실패했데이.');
       return;
     }
     // 로그인 성공 → 로컬 기록을 uid 문서로 1회 병합 + 코스·완주 기록 클라우드 동기화.
@@ -94,9 +94,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (!mounted) return;
     await _load();
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('로그인 완료! 이제 기기가 바뀌어도 기록이 이어진데이.')),
-    );
+    showTopSnackBar(context, message: '로그인 완료! 이제 기기가 바뀌어도 기록이 이어진데이.');
   }
 
   /// 로그인 시점 1회 마이그레이션: 로컬 완주 기록을 uid 리더보드 문서로 병합.
@@ -172,9 +170,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     } catch (e) {
       debugPrint('[Profile] 프로필 사진 변경 실패: $e');
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('사진을 불러오지 못했데이. 다시 해보이소.')),
-      );
+      showTopSnackBar(context, message: '사진을 불러오지 못했데이. 다시 해보이소.');
     }
   }
 
@@ -809,9 +805,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (!mounted) return;
     await _load();
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('코스를 지웠데이.')),
-    );
+    showTopSnackBar(context, message: '코스를 지웠데이.');
   }
 
   Widget _emptyCourses() {

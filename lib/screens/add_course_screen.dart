@@ -10,6 +10,7 @@ import '../models/user_course.dart';
 import '../services/auth_service.dart';
 import '../services/firebase_service.dart';
 import '../services/user_course_store.dart';
+import '../widgets/top_snack_bar.dart';
 import 'location_picker_screen.dart';
 
 /// 코스 추가/수정 화면입니다. (시안 04 · 로컬 저장)
@@ -96,9 +97,7 @@ class _AddCourseScreenState extends State<AddCourseScreen> {
   Future<void> _submit() async {
     if (_saving) return;
     if (_waypoints.length < _minWaypoints) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text(MessagesKo.addCourseWaypointTooFew)),
-      );
+      showTopSnackBar(context, message: MessagesKo.addCourseWaypointTooFew);
       return;
     }
     if (!_valid) return;
@@ -134,14 +133,16 @@ class _AddCourseScreenState extends State<AddCourseScreen> {
     final uid = AuthService.instance.currentUser?.uid;
     if (uid != null) await _firebase.uploadCourse(uid, course);
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(_isEditing ? '코스가 수정됐데이!' : '코스가 등록됐데이! 고맙습니더')),
+    showTopSnackBar(
+      context,
+      message: _isEditing ? '코스가 수정됐데이!' : '코스가 등록됐데이! 고맙습니더',
     );
     Navigator.pop(context, true);
   }
 
   /// 방법 A: 지도 피커에서 좌표를 골라 경유지로 추가합니다. (#1)
   Future<void> _addFromMap() async {
+    FocusManager.instance.primaryFocus?.unfocus();
     final result = await Navigator.of(context).push<LocationPickResult>(
       MaterialPageRoute(
         builder: (_) => const LocationPickerScreen(),
@@ -159,6 +160,7 @@ class _AddCourseScreenState extends State<AddCourseScreen> {
 
   /// 방법 B: 내장 DB 명소를 골라 경유지로 추가합니다. (#1)
   Future<void> _addFromPlaces() async {
+    FocusManager.instance.primaryFocus?.unfocus();
     final result = await Navigator.of(context).push<LocationPickResult>(
       MaterialPageRoute(builder: (_) => const PlaceSearchScreen()),
     );
@@ -185,11 +187,10 @@ class _AddCourseScreenState extends State<AddCourseScreen> {
 
   /// 갤러리에서 사진을 골라(최대 10장) 앱 문서 디렉토리에 복사 후 경로를 저장합니다. (#2)
   Future<void> _pickPhotos() async {
+    FocusManager.instance.primaryFocus?.unfocus();
     final remaining = _maxPhotos - _photoPaths.length;
     if (remaining <= 0) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text(MessagesKo.addCoursePhotoMax)),
-      );
+      showTopSnackBar(context, message: MessagesKo.addCoursePhotoMax);
       return;
     }
     try {
@@ -208,9 +209,7 @@ class _AddCourseScreenState extends State<AddCourseScreen> {
     } catch (e) {
       debugPrint('[AddCourse] 사진 선택 실패: $e');
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('사진을 불러오지 못했데이. 다시 해보이소.')),
-      );
+      showTopSnackBar(context, message: '사진을 불러오지 못했데이. 다시 해보이소.');
     }
   }
 

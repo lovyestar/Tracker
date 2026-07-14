@@ -5,9 +5,9 @@
 ///  - 실제 서비스라면 이런 키는 공개 저장소에 올리면 안 됩니다.
 ///    (대회 제출/로컬 실행용으로만 그대로 사용합니다.)
 class ApiKeys {
-  static const kakaoNativeAppKey = '5cd9b1b8085d60acff9c34c8bbb217bc'; // 카카오 지도 SDK 초기화
-  static const kakaoRestApiKey = '2364cd28d3cab02dbf50e6bc4719275f'; // (참고용) 카카오 REST
-  static const kakaoJavascriptKey = '2364cd28d3cab02dbf50e6bc4719275f'; // (참고용)
+  static const kakaoNativeAppKey = '492510bbe59a4f664a55c03d00af247a'; // 카카오 지도 SDK 초기화
+  static const kakaoRestApiKey = 'ea9a6c8d3e79c55645f279c9bbbae92d'; // (참고용) 카카오 REST
+  static const kakaoJavascriptKey = '95c0685ce87d52ea49c254d077406fb7'; // (참고용)
   static const perplexityApiKey =
       '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';
   static const naverClientId = 'uz0leL7ec88W9D7MbPX4'; // 데이터 파이프라인용(앱 런타임 미사용 가능)

@@ -12,6 +12,7 @@ import '../models/place.dart';
 import '../services/kakao_local_service.dart';
 import '../services/place_repository.dart';
 import '../widgets/place_photo.dart';
+import '../widgets/top_snack_bar.dart';
 import '../widgets/yeongmaegi_bubble.dart';
 
 /// 위치 선택 결과입니다. 지도 피커/명소 선택 공통으로 사용합니다.
@@ -105,9 +106,7 @@ class _LocationPickerScreenState extends State<LocationPickerScreen> {
       _searched = true;
     });
     if (results.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('검색 결과가 없데이. 지도를 직접 탭해서 찍어도 된데이.')),
-      );
+      showTopSnackBar(context, message: '검색 결과가 없데이. 지도를 직접 탭해서 찍어도 된데이.');
     }
   }
 
