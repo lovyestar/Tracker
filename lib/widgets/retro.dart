@@ -159,6 +159,7 @@ class InfoTag extends StatelessWidget {
   final String text;
   final Color? color;
   final bool flexible;
+  final MainAxisAlignment mainAxisAlignment;
 
   const InfoTag({
     super.key,
@@ -166,6 +167,7 @@ class InfoTag extends StatelessWidget {
     required this.text,
     this.color,
     this.flexible = false,
+    this.mainAxisAlignment = MainAxisAlignment.start
   });
 
   @override
@@ -178,6 +180,7 @@ class InfoTag extends StatelessWidget {
       style: TextStyle(fontSize: 12.5, color: c, fontWeight: FontWeight.w600),
     );
     return Row(
+      mainAxisAlignment: mainAxisAlignment,
       mainAxisSize: MainAxisSize.min,
       children: [
         Icon(icon, size: 14, color: c),

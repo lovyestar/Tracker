@@ -361,7 +361,7 @@ class _AddCourseScreenState extends State<AddCourseScreen> {
           borderRadius: BorderRadius.circular(14),
           border: Border.all(color: AppTheme.brownBorder, width: 1.5),
         ),
-        child: const Text('아직 경유지가 없데이. 아래 버튼으로 자리를 골라봐라!',
+        child: const Text('아직 경유지가 없데이.\n아래 버튼으로 자리를 골라봐라!',
             style: TextStyle(color: AppTheme.bodyBrown)),
       );
     }

@@ -56,7 +56,7 @@ class MessagesKo {
   // ---------------------------------------------------------------------------
   // 2. 추천 (Recommendation)
   // ---------------------------------------------------------------------------
-  static const String recommendStart = '쫌만 기다려봐라. 니 조건 보고 딱 맞는 코스 뽑아주꾸마.';
+  static const String recommendStart = '쫌만 기다리면 딱 맞는 코스 뽑아주꾸마.';
   static const String recommendSpontaneous =
       '계획 없이 왔나? 마 좋다. 즉흥으로 갈수록 재밌는 게 여행이라카이.';
   static const String recommendPlanned = '시간이랑 조건 딱 정해서 왔네. 알겠다, 낭비 없이 짜주꾸마.';
@@ -131,7 +131,7 @@ class MessagesKo {
 
   /// 경유지(다중 위치) 목록 입력 안내. (#1)
   static const String addCourseWaypointHint =
-      '코스는 순서대로 들를 자리로 만든데이. 지도나 명소에서 최소 4곳은 골라야 등록된다카이.';
+      '코스는 순서대로 들를 자리로 만든데이.\n지도나 명소에서 최소 4곳은 골라야 등록된다카이.';
 
   /// 경유지가 4곳 미만일 때 안내. (#1)
   static const String addCourseWaypointTooFew =

@@ -81,19 +81,23 @@ class RecommendationCard extends StatelessWidget {
                   Row(
                     children: [
                       Expanded(
+                        flex: 1,
                         child: InfoTag(
                             icon: Icons.schedule,
                             text: '소요 ${rec.duration}',
                             color: AppTheme.skyBlue,
-                            flexible: true),
+                            flexible: true
+                          ),
                       ),
-                      const SizedBox(width: 12),
                       Expanded(
+                        flex: 3,
                         child: InfoTag(
                             icon: Icons.payments_outlined,
                             text: rec.estimatedCost,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             color: AppTheme.skyBlue,
-                            flexible: true),
+                            flexible: true
+                        ),
                       ),
                     ],
                   ),
