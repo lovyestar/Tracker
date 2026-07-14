@@ -347,9 +347,9 @@ class _MapScreenState extends State<MapScreen> {
         ],
       ),
       // MainShell 이 extendBody + BottomAppBar(높이 66) 를 쓰므로, 탭 내부 Scaffold 의
-      // FAB 는 기본 위치에서 하단 내비에 가려집니다. 내비 높이만큼 위로 띄웁니다.
+      // FAB 는 기본 위치에서 하단 내비에 가려집니다. 내비 높이만큼 위로 띄웁니다. 114
       floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 74),
+        padding: const EdgeInsets.only(bottom: 114),
         child: FloatingActionButton.extended(
           backgroundColor: AppTheme.navy,
           foregroundColor: Colors.white,
