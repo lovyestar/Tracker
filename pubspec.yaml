@@ -1,0 +1,73 @@
+name: tracker_app
+description: "부산 영도 AI 스탬프 투어 앱 트래커 - 영매기 페르소나 + Kakao 지도 + GPS 스탬프"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Kakao 지도 SDK (pub.dev). 지도 표시/마커(Poi) 기능에 사용합니다.
+  kakao_map_sdk: ^1.2.3
+
+  # GPS 실시간 위치. 목표 좌표와 50m 이내면 스탬프 자동 획득. (SPEC §1, §4-5)
+  geolocator: ^13.0.1
+
+  # Perplexity sonar-pro API 호출용 HTTP 클라이언트. (SPEC §5)
+  http: ^1.2.2
+
+  # 로컬 저장(닉네임·완주 기록 오프라인 폴백). (SPEC §1)
+  shared_preferences: ^2.3.2
+
+  # Firebase(완주 기록·리더보드). 미설정 시 초기화 가드로 앱 동작. (SPEC §7)
+  firebase_core: ^3.6.0
+  cloud_firestore: ^5.4.4
+
+  # Google 로그인(선택). firebase_core 3.x 호환 firebase_auth 5.x +
+  # 간단한 signIn() API 를 제공하는 google_sign_in 6.x 조합으로 고정.
+  firebase_auth: 5.7.0
+  google_sign_in: 6.3.0
+
+  # 영매기 TTS 음성 대사 재생(assets/voice/*.mp3). 버전 고정.
+  audioplayers: 6.8.1
+
+  cupertino_icons: ^1.0.8
+
+  # 프로필 사진 선택(갤러리)·앱 문서 디렉토리 저장. 버전 고정.
+  image_picker: 1.2.3
+  path_provider: 2.1.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
+  # 앱에 포함할 자산(assets) 파일들.
+  #  - 장소 DB(JSON), 마커 아이콘(PNG), 영매기 이미지(JPG)를 등록합니다.
+  #  - 여기에 등록해야 코드의 rootBundle / Image.asset / KImage.fromAsset 에서 읽을 수 있습니다.
+  assets:
+    - assets/yeongdo_tourism_db.json
+    - assets/marker.png
+    - assets/images/yeongmaegi.jpg
+    - assets/images/marker_todo.png
+    - assets/images/marker_done.png
+    - assets/place_photos/
+    - assets/voice/
+
+  # Pretendard (OFL 라이선스, assets/fonts/OFL.txt 포함). 시안 지정 서체.
+  # 번들 폰트만 사용하며 런타임 네트워크 폰트 의존은 없습니다.
+  fonts:
+    - family: Pretendard
+      fonts:
+        - asset: assets/fonts/Pretendard-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Pretendard-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Pretendard-ExtraBold.ttf
+          weight: 800
