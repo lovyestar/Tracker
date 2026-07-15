@@ -62,6 +62,11 @@ class _MainShellState extends State<MainShell> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // 셸이 키보드에 맞춰 리사이즈되면 IndexedStack 안의 지도 탭(카카오맵
+      // 네이티브 텍스처)까지 매번 리사이즈되어, 위 화면에서 키보드를 쓰고
+      // 돌아왔을 때 지도가 흔들리고 번쩍이는 문제가 생깁니다. 키보드 대응은
+      // 각 탭 화면의 Scaffold 가 알아서 하므로 셸에서는 끕니다.
+      resizeToAvoidBottomInset: false,
       extendBody: true,
       body: IndexedStack(index: _index, children: _tabs),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

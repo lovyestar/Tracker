@@ -330,6 +330,10 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // 이 화면엔 텍스트 입력이 없습니다. 위에 뜬 코스 만들기 화면에서 키보드가
+      // 열리고 닫힐 때 아래에 깔린 카카오맵(네이티브 텍스처)이 함께 리사이즈되면
+      // 복귀 후 지도가 흔들리고 번쩍이는 잔상이 생기므로 리사이즈를 끕니다.
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text('트래커 · 영도 관광 가이드'),
         actions: [

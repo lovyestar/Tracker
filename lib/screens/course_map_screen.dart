@@ -525,6 +525,9 @@ class _CourseMapScreenState extends State<CourseMapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // 지도(네이티브 텍스처)가 키보드 인셋에 따라 리사이즈되면 화면 복귀 시
+      // 흔들림/번쩍임이 생기므로 끕니다. 이 화면엔 텍스트 입력이 없습니다.
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Column(
           children: [

@@ -214,6 +214,9 @@ class _LocationPickerScreenState extends State<LocationPickerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // 검색 키보드가 열릴 때마다 지도(네이티브 텍스처)가 리사이즈되면
+      // 뒤틀림/번쩍임이 생기므로 끕니다. 검색 바는 상단이라 가려지지 않습니다. (#3)
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(title: const Text('지도에서 위치 선택')),
       body: _resolvingCenter
           ? const Center(child: CircularProgressIndicator())

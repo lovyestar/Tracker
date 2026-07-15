@@ -96,6 +96,9 @@ class _AddCourseScreenState extends State<AddCourseScreen> {
 
   Future<void> _submit() async {
     if (_saving) return;
+    // 키보드가 열린 채 pop 되면 키보드 닫힘과 화면 전환이 겹쳐
+    // 아래 지도 화면이 흔들려 보이므로 먼저 포커스를 해제합니다.
+    FocusManager.instance.primaryFocus?.unfocus();
     if (_waypoints.length < _minWaypoints) {
       showTopSnackBar(context, message: MessagesKo.addCourseWaypointTooFew);
       return;

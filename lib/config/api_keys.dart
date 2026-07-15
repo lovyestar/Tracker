@@ -12,4 +12,3 @@ class ApiKeys {
       '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';
   static const naverClientId = 'uz0leL7ec88W9D7MbPX4'; // 데이터 파이프라인용(앱 런타임 미사용 가능)
   static const naverClientSecret = '1JMd_0YyWW';
-}
